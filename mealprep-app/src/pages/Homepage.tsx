@@ -1,27 +1,28 @@
-import { FC } from 'react';
+import React from 'react';
+import { AppBar, Typography, Button, Box, Container } from '@mui/material';
 
-const HomePage: FC = () => {
+const HomePage: React.FC = () => {
   return (
-    <div className="home-page">
-      <header>
-        <h1>MealPrep App</h1>
-        <p>Plan je maaltijden voor de week</p>
-      </header>
+    <Container className="home-page">
+      <Box component="section" className="this-week" sx={{ mb: 3, flexGrow: 1 }}>
+        <Typography variant="h2">Deze week</Typography>
+        <Box className="selected-recipes">
+          <Typography variant="body1">Je hebt nog geen recepten geselecteerd voor deze week</Typography>
+        </Box>
+        <Button variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
+          Recepten bekijken
+        </Button>
+      </Box>
 
-      <section className="this-week">
-        <h2>Deze week</h2>
-        <div className="selected-recipes">
-          {/* Hier komen later de geselecteerde recepten */}
-          <p>Je hebt nog geen recepten geselecteerd voor deze week</p>
-        </div>
-        <button className="primary-button">Recepten bekijken</button>
-      </section>
-
-      <section className="actions">
-        <button className="secondary-button">Boodschappenlijst</button>
-        <button className="primary-button">Stappenplan genereren</button>
-      </section>
-    </div>
+      <Box component="section" className="actions" sx={{ display: 'flex', gap: 1.5 }}>
+        <Button variant="outlined" color="primary" fullWidth>
+          Boodschappenlijst
+        </Button>
+        <Button variant="contained" color="primary" fullWidth>
+          Stappenplan genereren
+        </Button>
+      </Box>
+    </Container>
   );
 };
 
