@@ -1,9 +1,10 @@
 import React from "react";
 import {recipes} from "../data/dummy";
-import {Container, List, Typography} from "@mui/material";
+import {Container, List, ListItem, ListItemText, Typography} from "@mui/material";
+import {Recipe} from "../types"
 
 const RecipeDetailPage: React.FC = () => {
-	const recipe = recipes[0]
+	const recipe: Recipe = recipes[0]
 	return (
 		<Container>
 			<Typography variant="h2">
@@ -14,14 +15,27 @@ const RecipeDetailPage: React.FC = () => {
 			</Typography>
             <List dense>
 				{recipe.ingredients?.map((ingredient, index) => (
-                <ListItem>
-                  <ListItemText
-                    primary="Single-line item"
-                    secondary={secondary ? 'Secondary text' : null}
-                  />
-                </ListItem>,
-              )}
+                    <ListItem key={index}>
+                      <ListItemText
+					  	primary={ingredient.name + " - " + ingredient.quantity}
+					  />
+                    </ListItem>
+                ))}
             </List>
+
+			<Typography variant="h6">
+				Stappen
+			</Typography>
+            <List dense>
+				{recipe.steps?.map((step, index) => (
+                    <ListItem key={index}>
+                      <ListItemText
+					  	primary={(index + 1) + ". " + step}
+					  />
+                    </ListItem>
+                ))}
+            </List>
+
 		</Container>
 	);
 };
