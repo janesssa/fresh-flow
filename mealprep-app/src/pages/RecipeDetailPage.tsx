@@ -2,9 +2,11 @@ import React from "react";
 import {recipes} from "../data/dummy";
 import {Container, List, ListItem, ListItemText, Typography} from "@mui/material";
 import {Recipe} from "../types"
+import {useParams} from "react-router";
 
 const RecipeDetailPage: React.FC = () => {
-	const recipe: Recipe = recipes[0]
+	const {recipeId} = useParams();
+	const recipe: Recipe = recipes.filter(r => r.id === recipeId)[0];
 	return (
 		<Container>
 			<Typography variant="h2">
@@ -22,7 +24,6 @@ const RecipeDetailPage: React.FC = () => {
                     </ListItem>
                 ))}
             </List>
-
 			<Typography variant="h6">
 				Stappen
 			</Typography>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { AppBar, Typography, Button, Box, Container } from '@mui/material';
+import { Typography, Button, Box, Container } from '@mui/material';
+import { Link } from "react-router";
 
 const HomePage: React.FC = () => {
   return (
@@ -10,7 +11,9 @@ const HomePage: React.FC = () => {
           <Typography variant="body1">Je hebt nog geen recepten geselecteerd voor deze week</Typography>
         </Box>
         <Button variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
-          Recepten bekijken
+			<Link to="/recipes">
+			  Recepten bekijken
+			</Link>
         </Button>
       </Box>
 
